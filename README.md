@@ -15,9 +15,9 @@ cd .\WillAPI\WillAPI\
 dotnet run
 ```
 
-# Angular Project
+# Angular UI
 
-* In another tab in the repo directory
+In another tab in the repo directory
 
 ```
 cd .\WillAPI\Will_UI\
