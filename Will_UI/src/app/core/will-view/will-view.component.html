@@ -1,0 +1,23 @@
+<div *ngIf="result != -1" class="container col-12">
+    <form [formGroup]="willform">
+        <div class="display-will">
+            <!-- <angular-editor formControlName="messageContent" [config]="editorConfig"></angular-editor> -->
+            <div [innerHTML]="messageContent"></div>
+        </div>
+
+        <div class="image">
+            <img *ngIf="base64ImageUrl != null" src="data:image/jpg;base64,{{base64ImageUrl}}" class="image-preview" />
+        </div>
+    </form>
+</div>
+
+
+
+<div *ngIf="result == -1" class="container col-12">
+    <h1>This Will is currently locked</h1>
+    <h2> and it will be available to public at this time </h2>
+    <br>
+    <h1> {{publishDate}}</h1>
+
+    <i class="pi pi-lock" style="font-size: 10rem"></i>
+</div>

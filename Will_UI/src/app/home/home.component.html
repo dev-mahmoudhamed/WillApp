@@ -1,0 +1,36 @@
+<app-nav-bar></app-nav-bar>
+
+<ng-container *ngIf="(accountService.currentUser$ | async) === null">
+    <h1>
+        Here you can put anything you want to share after DEATH ..
+    </h1>
+</ng-container>
+
+<ng-container *ngIf="accountService.currentUser$ | async as user">
+    <div class="wills row row-cols-3 g-3">
+        <ng-container *ngFor="let item of willsList; let i = index">
+            <a href="/will/{{item.id}}">
+                <div class="col">
+                    <div class="card">
+                        <div class="card-body">
+                            <h2>{{i+1}}</h2>
+                            <i class="pi pi-lock" style="font-size: 4rem"></i>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </ng-container>
+
+        <a href="/will/new">
+            <div class="col">
+                <div class="card">
+                    <div class="card-body">
+                        <h2>Add new Will</h2>
+                        <i class="pi pi-plus" style="font-size: 4rem"></i>
+                    </div>
+                </div>
+            </div>
+        </a>
+
+    </div>
+</ng-container>

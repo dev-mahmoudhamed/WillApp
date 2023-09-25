@@ -1,0 +1,9 @@
+<div class="form-floating mb-3">
+    <input type={{type}} [formControl]="control" class="form-control" placeholder="{{lable}}"
+        [ngClass]="(control.touched) ? control.invalid? 'is-invalid': 'is-valid' : null">
+
+    <label for="floatingInput">{{lable}}</label>
+    <div *ngIf="control.errors?.['required']" class="invalid-feedback"> Please enter your {{lable}} </div>
+    <div *ngIf="control.errors?.['email']" class="invalid-feedback"> Invalid email address </div>
+    <div *ngIf="control.errors?.['pattern']" class="invalid-feedback"> Password not valid </div>
+</div>

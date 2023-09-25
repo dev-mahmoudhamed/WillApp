@@ -1,0 +1,61 @@
+<app-nav-bar></app-nav-bar>
+
+<ng-container *ngIf="authorizedState">
+    <div class="container">
+        <i class="pi pi-exclamation-triangle icon"></i>
+        <h1>Unauthorized</h1>
+        <h4>You don't have permission to access this page.</h4>
+        <a href="/">Back to Home</a>
+    </div>
+</ng-container>
+
+
+<div *ngIf="!authorizedState" class="container mt-4">
+    <h2>Your data will be published on &#160;<strong>{{publishDate}}</strong></h2>
+    <form [formGroup]="willform" class="mb-4">
+        <div class="display-will">
+            <ng-container>
+                <angular-editor formControlName="messageContent" [config]="editorConfig"></angular-editor>
+            </ng-container>
+        </div>
+
+        <div class="date">
+
+            <i class="pi pi-exclamation-circle warning-icon custom-label">
+                Please choose <strong>date</strong> and <strong>time</strong> to publish your
+                will
+                <i class="pi pi-exclamation-circle warning-icon custom-label"></i>
+            </i>
+
+            <p-calendar formControlName="date" [showTime]="true" dateFormat="dd/mm/yy"></p-calendar>
+        </div>
+
+        <div class="image">
+            <h4> Upload an image</h4>
+            <img *ngIf="imageUrl != null" [src]="imageUrl" class="image-preview" />
+            <img *ngIf="base64ImageUrl != null" src="data:image/jpg;base64, {{base64ImageUrl}}" alt="Red dot"
+                class="image-preview" />
+            <div class="form-group">
+                <label for="image">Choose an image:</label>
+                <input type="file" (change)="onFileSelected($event)" class="form-control-file"
+                    formControlName="fileContent" accept="image/*" />
+            </div>
+        </div>
+        <div style="text-align:center; margin-top: 10px;">
+            <button (click)="publish()" type="button" class="btn btn-primary">Publish</button>
+        </div>
+    </form>
+
+    <div *ngIf="deleteButton" style="text-align:center; margin-top: 20px;">
+        <button (click)="deleteWill()" pButton class="p-button-danger">Delete Will</button>
+    </div>
+</div>
+
+
+
+<p-dialog [(visible)]="visible" [style]="{ width: '50vw' }">
+    <h1> Your data will be published on &#160; <i>{{publishDate}}</i></h1>
+    <ng-template pTemplate="footer">
+        <p-button icon="pi pi-check" (click)="visible = false" label="Ok" styleClass="p-button-text"></p-button>
+    </ng-template>
+</p-dialog>

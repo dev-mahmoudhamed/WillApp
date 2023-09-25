@@ -1,0 +1,15 @@
+<div class="container">
+    <div>
+        <ng-container *ngIf="(accountService.currentUser$ | async) === null">
+            <a class="btn btn-success me-2" routerLink="/login">Login</a>
+            <a class="btn btn-primary me-3" routerLink="/register">Register</a>
+        </ng-container>
+    </div>
+</div>
+
+<ng-container class="navbar" *ngIf="accountService.currentUser$ | async as user">
+    <div>
+        <strong> Welcome {{user.fullName}}</strong>
+        <a (click)="accountService.logout()" class="btn btn-secondary me-3">Logout</a>
+    </div>
+</ng-container>
