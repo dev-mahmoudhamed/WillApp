@@ -1,6 +1,4 @@
-## Clone
-
-Clone the project
+## Clone the project
 
 ```bash
 git clone https://github.com/dev-mahmoudhamed/WillApp
@@ -8,7 +6,7 @@ git clone https://github.com/dev-mahmoudhamed/WillApp
 
 ## Usage
 
-#dotnet API
+# dotnet API
 ```console
 cd .\WillAPI\WillAPI\
 ```
